@@ -1,8 +1,0 @@
-Changes:
-
-@version@:  - ...
-(Rev.: @r@) - ...
-
-v20100524:  - API refactorings/ clean-ups after initial release
-(Rev.: 470) - New dependency to SoftSmithy Utility Library
-
