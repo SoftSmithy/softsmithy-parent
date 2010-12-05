@@ -52,7 +52,7 @@
 
     <!-- Enforcer Defaults -->
         <maven.version>2.2.1</maven.version>
-        <java.version>1.6.0</java.version>
+        <java.min.version>1.6.0</java.min.version>
 
     <!-- Dev Environment Defaults -->
         <java.compiler.version>1.6</java.compiler.version>
@@ -129,7 +129,7 @@
                                     <version>${maven.version}</version>
                                 </requireMavenVersion>
                                 <requireJavaVersion>
-                                    <version>${java.version}</version>
+                                    <version>${java.min.version}</version>
                                 </requireJavaVersion>
                             </rules>
                             <fail>true</fail>
