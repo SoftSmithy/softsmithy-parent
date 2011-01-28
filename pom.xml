@@ -64,6 +64,7 @@
     <!-- Plugin Versions Defaults -->
         <plugin.properties.version>1.0-alpha-2</plugin.properties.version>
         <plugin.enforcer.version>1.0-beta-1</plugin.enforcer.version>
+        <plugin.buildnumber.version>1.0-beta-4</plugin.buildnumber.version>
 
     </properties>
 
@@ -93,6 +94,19 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-enforcer-plugin</artifactId>
                     <version>${plugin.enforcer.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>buildnumber-maven-plugin</artifactId>
+                    <version>${plugin.buildnumber.version}</version>
+                    <executions>
+                        <execution>
+                            <phase>validate</phase>
+                            <goals>
+                                <goal>hgchangeset</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
             </plugins>
         </pluginManagement>
