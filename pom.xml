@@ -50,12 +50,9 @@
     </licenses>
     <properties>
 
-    <!-- Enforcer Defaults -->
-        <maven.version>2.2.1</maven.version>
-        <java.min.version>1.6.0</java.min.version>
-
     <!-- Dev Environment Defaults -->
-        <java.compiler.version>1.6</java.compiler.version>
+        <maven.version>2.2.1</maven.version>
+        <java.min.version>1.6</java.min.version>
         <java.compiler.compilerArgument>-Xlint:all</java.compiler.compilerArgument>
         <java.compiler.showWarnings>true</java.compiler.showWarnings>
         <java.compiler.showDeprecation>true</java.compiler.showDeprecation>
@@ -155,8 +152,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>${java.compiler.version}</source>
-                    <target>${java.compiler.version}</target>
+                    <source>${java.min.version}</source>
+                    <target>${java.min.version}</target>
                     <compilerArgument>${java.compiler.compilerArgument}</compilerArgument>
                     <showWarnings>${java.compiler.showWarnings}</showWarnings>
                     <showDeprecation>${java.compiler.showDeprecation}</showDeprecation>
