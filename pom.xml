@@ -51,7 +51,7 @@
     <properties>
 
     <!-- Dev Environment Defaults -->
-        <maven.version>3.0.3</maven.version>
+        <maven.version>3.0.4</maven.version>
         <java.min.version>1.7</java.min.version>
         <java.compiler.compilerArgument>-Xlint:all</java.compiler.compilerArgument>
         <java.compiler.showWarnings>true</java.compiler.showWarnings>
@@ -168,7 +168,7 @@
                         <goals>
                             <goal>enforce</goal>
                         </goals>
-                        <phase>verify</phase>
+                        <phase>validate</phase>
                         <configuration>
                             <rules>
                                 <requireMavenVersion>
