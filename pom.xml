@@ -57,6 +57,9 @@
         <java.compiler.showWarnings>true</java.compiler.showWarnings>
         <java.compiler.showDeprecation>true</java.compiler.showDeprecation>
         <properties.filename>project.properties</properties.filename>
+        <main-resources.filtering>true</main-resources.filtering>
+        <main-resources-bin.filtering>false</main-resources-bin.filtering>
+        <annotations-resources.filtering>true</annotations-resources.filtering>
 
     <!-- Plugin Versions Defaults -->
         <plugin.properties.version>1.0-alpha-2</plugin.properties.version>
@@ -76,7 +79,18 @@
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
-                <filtering>true</filtering>
+                <filtering>${main-resources.filtering}</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources-bin</directory>
+                <filtering>${main-resources-bin.filtering}</filtering>
+            </resource>
+            <resource>
+                <directory>${project.build.directory}/generated-sources/annotations</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+                <filtering>${annotations-resources.filtering}</filtering>
             </resource>
         </resources>
 
