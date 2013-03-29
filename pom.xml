@@ -93,7 +93,13 @@
                 <filtering>${annotations-resources.filtering}</filtering>
             </resource>
         </resources>
-
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-ssh</artifactId>
+                <version>2.2</version>
+            </extension>
+        </extensions>
         <pluginManagement>
             <plugins>
                 <plugin>
