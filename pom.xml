@@ -50,7 +50,7 @@
     </licenses>
     <properties>
 
-    <!-- Dev Environment Defaults -->
+        <!-- Dev Environment Defaults -->
         <maven.version>3.0.4</maven.version>
         <java.min.version>1.7</java.min.version>
         <java.compiler.compilerArgument>-Xlint:all</java.compiler.compilerArgument>
@@ -61,10 +61,10 @@
         <main-resources-bin.filtering>false</main-resources-bin.filtering>
         <annotations-resources.filtering>true</annotations-resources.filtering>
 
-    <!-- Plugin Versions Defaults -->
+        <!-- Plugin Versions Defaults -->
         <plugin.properties.version>1.0-alpha-2</plugin.properties.version>
-        <plugin.enforcer.version>1.0.1</plugin.enforcer.version>
-        <plugin.buildnumber.version>1.0</plugin.buildnumber.version>
+        <plugin.enforcer.version>1.2</plugin.enforcer.version>
+        <plugin.buildnumber.version>1.2</plugin.buildnumber.version>
 
     </properties>
 
@@ -127,18 +127,28 @@
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>2.5</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>2.3.2</version>
+                    <version>3.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-dependency-plugin</artifactId>
-                    <version>2.4</version>
+                    <version>2.7</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
                     <version>2.7</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>2.4</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -153,12 +163,12 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-project-info-reports-plugin</artifactId>
-                    <version>2.4</version>
+                    <version>2.6</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-resources-plugin</artifactId>
-                    <version>2.5</version>
+                    <version>2.6</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -169,7 +179,7 @@
                     <!-- See issue https://issues.sonatype.org/browse/OSSRH-3975 -->
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
-                    <version>2.2.2</version>
+                    <version>2.4.1</version>
                     <configuration>
                         <mavenExecutorId>forked-path</mavenExecutorId>
                         <useReleaseProfile>false</useReleaseProfile>
