@@ -9,7 +9,7 @@
     <groupId>org.softsmithy</groupId>
     <artifactId>softsmithy-parent</artifactId>
     <packaging>pom</packaging>
-    <version>2.3-SNAPSHOT</version>
+    <version>2.3</version>
     <name>SoftSmithy - Parent POM</name>
     <url>http://www.softsmithy.org</url>
     <description>SoftSmithy is a platform for open source Java developers. The core is an extended Java utility library. This SoftSmithy Parent POM should be the parent (either directly or indirectly) of every SoftSmithy project unless there is a good reason to do otherwise (in which case the reason should be documented).</description>
@@ -23,7 +23,7 @@
         <connection>scm:hg:http://softsmithy.hg.sourceforge.net:8000/hgroot/softsmithy/softsmithy-parent/main-golden</connection>
         <developerConnection>scm:hg:ssh://${username}@softsmithy.hg.sourceforge.net/hgroot/softsmithy/softsmithy-parent/main-golden</developerConnection>
         <url>http://softsmithy.hg.sourceforge.net/hgweb/softsmithy/softsmithy-parent/main-golden/file</url>
-      <tag>HEAD</tag>
+      <tag>softsmithy-parent-2.3</tag>
   </scm>
 
     <issueManagement>
