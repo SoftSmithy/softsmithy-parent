@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.sonatype.oss</groupId>
         <artifactId>oss-parent</artifactId>
-        <version>7</version>
+        <version>9</version>
     </parent>
     <groupId>org.softsmithy</groupId>
     <artifactId>softsmithy-parent</artifactId>
@@ -23,8 +23,8 @@
         <connection>scm:hg:http://softsmithy.hg.sourceforge.net:8000/hgroot/softsmithy/softsmithy-parent/main-golden</connection>
         <developerConnection>scm:hg:ssh://${username}@softsmithy.hg.sourceforge.net/hgroot/softsmithy/softsmithy-parent/main-golden</developerConnection>
         <url>http://softsmithy.hg.sourceforge.net/hgweb/softsmithy/softsmithy-parent/main-golden/file</url>
-      <tag>HEAD</tag>
-  </scm>
+        <tag>HEAD</tag>
+    </scm>
 
     <issueManagement>
         <system>SourceForge.net</system>
@@ -61,14 +61,31 @@
         <main-resources.filtering>true</main-resources.filtering>
         <main-resources-bin.filtering>false</main-resources-bin.filtering>
         <annotations-resources.filtering>true</annotations-resources.filtering>
+        <test-resources.filtering>true</test-resources.filtering>
+        <test-resources-bin.filtering>false</test-resources-bin.filtering>
+        <test-annotations-resources.filtering>true</test-annotations-resources.filtering>
 
         <!-- Plugin Versions Defaults -->
         <plugin.properties.version>1.0-alpha-2</plugin.properties.version>
         <plugin.enforcer.version>1.3.1</plugin.enforcer.version>
-        <plugin.buildnumber.version>1.2</plugin.buildnumber.version>
-        <plugin.bundle.version>2.4.0</plugin.bundle.version>
+        <plugin.buildnumber.version>1.3</plugin.buildnumber.version>
+        <plugin.bundle.version>2.5.3</plugin.bundle.version>
+        <plugin.clean.version>2.6</plugin.clean.version>
+        <plugin.compiler.version>3.2</plugin.compiler.version>
+        <plugin.dependency.version>2.9</plugin.dependency.version>
+        <plugin.deploy.version>2.8.2</plugin.deploy.version>
+        <plugin.install.version>2.5.2</plugin.install.version>
+        <plugin.jar.version>2.5</plugin.jar.version>
         <plugin.toolchains.version>1.0</plugin.toolchains.version>
-
+        <plugin.javadoc.version>2.10.1</plugin.javadoc.version>
+        <plugin.project-info-reports.version>2.7</plugin.project-info-reports.version>
+        <!-- use version 2.6 since version 2.7 suffers from the following issue: http://jira.codehaus.org/browse/MSHARED-325-->
+        <plugin.resources.version>2.6</plugin.resources.version>
+        <plugin.site.version>3.4</plugin.site.version>
+        <plugin.release.version>2.5.1</plugin.release.version>
+        
+        <!-- Wagon Versions Defaults -->
+        <wagon.ssh.version>2.7</wagon.ssh.version>   
     </properties>
 
     <!-- Not inherited!?? -->
@@ -96,11 +113,28 @@
                 <filtering>${annotations-resources.filtering}</filtering>
             </resource>
         </resources>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>${test-resources.filtering}</filtering>
+            </testResource>
+            <testResource>
+                <directory>src/test/resources-bin</directory>
+                <filtering>${test-resources-bin.filtering}</filtering>
+            </testResource>
+            <testResource>
+                <directory>${project.build.directory}/generated-test-sources/test-annotations</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+                <filtering>${test-annotations-resources.filtering}</filtering>
+            </testResource>
+        </testResources>
         <extensions>
             <extension>
                 <groupId>org.apache.maven.wagon</groupId>
                 <artifactId>wagon-ssh</artifactId>
-                <version>2.2</version>
+                <version>${wagon.ssh.version}</version>
             </extension>
         </extensions>
         <pluginManagement>
@@ -136,52 +170,102 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-clean-plugin</artifactId>
-                    <version>2.5</version>
+                    <version>${plugin.clean.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.1</version>
+                    <version>${plugin.compiler.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-dependency-plugin</artifactId>
-                    <version>2.8</version>
+                    <version>${plugin.dependency.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
-                    <version>2.7</version>
+                    <version>${plugin.deploy.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-install-plugin</artifactId>
-                    <version>2.4</version>
+                    <version>${plugin.install.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <version>2.4</version>
+                    <version>${plugin.jar.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>2.9.1</version>
+                    <version>${plugin.javadoc.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-project-info-reports-plugin</artifactId>
-                    <version>2.7</version>
+                    <version>${plugin.project-info-reports.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-resources-plugin</artifactId>
-                    <version>2.6</version>
+                    <version>${plugin.resources.version}</version>
+                    <!--                    <executions>
+                    http://stackoverflow.com/questions/11144704/configure-encoding-for-different-filetypes-in-maven
+                    <executions>
+                        <execution>
+                             Turn off default resource copying 
+                            <id>default-resources</id>
+                            <phase />
+                        </execution>
+                        <execution>
+                             Filter resources in properties files. 
+                            <id>filter-properties-files</id>
+                            <phase>process-resources</phase>
+                            <goals>
+                                <goal>copy-resources</goal>
+                            </goals>
+                            <configuration>
+                                <encoding>ISO-8859-1</encoding>
+                                <outputDirectory>${project.build.outputDirectory}</outputDirectory>
+                                <resources>
+                                    <resource>
+                                        <directory>src/main/resources</directory>
+                                        <filtering>true</filtering>
+                                        <includes>
+                                            <include>**/*.properties</include>
+                                        </includes>
+                                    </resource>
+                                </resources>
+                            </configuration>
+                        </execution>
+                        <execution>
+                             Do not do property substitution in files that are not properties files, such as binary files. 
+                            <id>copy-other-resources</id>
+                            <phase>process-resources</phase>
+                            <goals>
+                                <goal>copy-resources</goal>
+                            </goals>
+                            <configuration>
+                                <outputDirectory>${project.build.outputDirectory}</outputDirectory>
+                                <resources>
+                                    <resource>
+                                        <directory>src/main/resources</directory>
+                                        <filtering>false</filtering>
+                                        <excludes>
+                                            <exclude>**/*.properties</exclude>
+                                        </excludes>
+                                    </resource>
+                                </resources>
+                            </configuration>
+                        </execution>
+                    </executions>-->
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
-                    <version>3.3</version>
+                    <version>${plugin.site.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -192,7 +276,7 @@
                     <!-- See issue https://issues.sonatype.org/browse/OSSRH-3975 -->
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
-                    <version>2.4.1</version>
+                    <version>${plugin.release.version}</version>
                     <configuration>
                         <mavenExecutorId>forked-path</mavenExecutorId>
                         <useReleaseProfile>false</useReleaseProfile>
@@ -265,7 +349,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>2.9</version>
+                        <version>${plugin.javadoc.version}</version>
                         <executions>
                             <execution>
                                 <id>attach-javadocs</id>
