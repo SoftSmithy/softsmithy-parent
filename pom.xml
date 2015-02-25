@@ -71,6 +71,7 @@
         <plugin.enforcer.version>1.3.1</plugin.enforcer.version>
         <plugin.buildnumber.version>1.3</plugin.buildnumber.version>
         <plugin.bundle.version>2.5.3</plugin.bundle.version>
+        <plugin.assembly.version>2.5.3</plugin.assembly.version>
         <plugin.clean.version>2.6.1</plugin.clean.version>
         <plugin.compiler.version>3.2</plugin.compiler.version>
         <plugin.dependency.version>2.9</plugin.dependency.version>
@@ -168,6 +169,11 @@
                     <groupId>org.apache.felix</groupId>
                     <artifactId>maven-bundle-plugin</artifactId>
                     <version>${plugin.bundle.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>${plugin.assembly.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
