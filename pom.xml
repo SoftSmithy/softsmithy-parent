@@ -303,8 +303,6 @@
                     <version>${plugin.jgitflow.version}</version>
                     <configuration>
                         <autoVersionSubmodules>true</autoVersionSubmodules>
-                        <!-- Enable this to push to origin using SSH keys -->
-                        <enableSshAgent>true</enableSshAgent>
                     </configuration>
                 </plugin>
             </plugins>
