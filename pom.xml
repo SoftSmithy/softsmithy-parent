@@ -303,6 +303,7 @@
                     <version>${plugin.jgitflow.version}</version>
                     <configuration>
                         <autoVersionSubmodules>true</autoVersionSubmodules>
+                        <pushReleases>true</pushReleases>
                     </configuration>
                 </plugin>
             </plugins>
