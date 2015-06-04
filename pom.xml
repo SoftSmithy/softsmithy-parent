@@ -20,9 +20,9 @@
     </organization>
 
     <scm>
-        <connection>scm:hg:http://hg.code.sf.net/p/softsmithy/softsmithy-parent</connection>
-        <developerConnection>scm:hg:ssh://${username}@hg.code.sf.net/p/softsmithy/softsmithy-parent</developerConnection>
-        <url>http://sourceforge.net/p/softsmithy/softsmithy-parent/ci/default/tree/</url>
+        <connection>scm:git:https://github.com/SoftSmithy/softsmithy-parent.git</connection>
+        <developerConnection>scm:hg:git@github.com:SoftSmithy/softsmithy-parent.git</developerConnection>
+        <url>https://github.com/SoftSmithy/softsmithy-parent</url>
         <tag>HEAD</tag>
     </scm>
 
@@ -86,6 +86,7 @@
         <plugin.site.version>3.4</plugin.site.version>
         <plugin.surefire.version>2.18.1</plugin.surefire.version>
         <plugin.release.version>2.5.1</plugin.release.version>
+        <plugin.jgitflow.version>1.0-m5.1</plugin.jgitflow.version>
         
         <!-- Wagon Versions Defaults -->
         <wagon.ssh.version>2.7</wagon.ssh.version>   
@@ -294,6 +295,14 @@
                         <mavenExecutorId>forked-path</mavenExecutorId>
                         <useReleaseProfile>false</useReleaseProfile>
                         <arguments>${release.plugin.arguments}</arguments>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>external.atlassian.jgitflow</groupId>
+                    <artifactId>jgitflow-maven-plugin</artifactId>
+                    <version>${plugin.jgitflow.version}</version>
+                    <configuration>
+                        <autoVersionSubmodules>true</autoVersionSubmodules>
                     </configuration>
                 </plugin>
             </plugins>
