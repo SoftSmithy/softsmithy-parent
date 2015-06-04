@@ -20,9 +20,9 @@
     </organization>
 
     <scm>
-        <connection>scm:hg:http://hg.code.sf.net/p/softsmithy/softsmithy-parent</connection>
-        <developerConnection>scm:hg:ssh://${username}@hg.code.sf.net/p/softsmithy/softsmithy-parent</developerConnection>
-        <url>http://sourceforge.net/p/softsmithy/softsmithy-parent/ci/default/tree/</url>
+        <connection>scm:git:https://github.com/SoftSmithy/softsmithy-parent.git</connection>
+        <developerConnection>scm:hg:git@github.com:SoftSmithy/softsmithy-parent.git</developerConnection>
+        <url>https://github.com/SoftSmithy/softsmithy-parent</url>
         <tag>HEAD</tag>
     </scm>
 
