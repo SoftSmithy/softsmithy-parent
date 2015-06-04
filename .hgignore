@@ -1,6 +1,0 @@
-target$
-\.orig\..*$
-\.orig$
-\.chg\..*$
-\.rej$
-\.conflict\~$
