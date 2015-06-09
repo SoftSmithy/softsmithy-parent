@@ -316,7 +316,9 @@
                     <configuration>
                         <autoVersionSubmodules>true</autoVersionSubmodules>
                         <pushReleases>true</pushReleases>
-                        <versionTagPrefix>release-</versionTagPrefix>
+                        <flowInitContext>
+                            <versionTagPrefix>release-</versionTagPrefix>
+                        </flowInitContext>                    
                     </configuration>
                 </plugin>
             </plugins>
