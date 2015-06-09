@@ -9,7 +9,7 @@
     <groupId>org.softsmithy</groupId>
     <artifactId>softsmithy-parent</artifactId>
     <packaging>pom</packaging>
-    <version>2.7-SNAPSHOT</version>
+    <version>2.6-SNAPSHOT</version>
     <name>SoftSmithy - Parent POM</name>
     <url>http://www.softsmithy.org</url>
     <description>SoftSmithy is a platform for open source Java developers. The core is an extended Java utility library. This SoftSmithy Parent POM should be the parent (either directly or indirectly) of every SoftSmithy project unless there is a good reason to do otherwise (in which case the reason should be documented).</description>
@@ -85,6 +85,7 @@
         <!-- use version 2.6 since version 2.7 suffers from the following issue: http://jira.codehaus.org/browse/MSHARED-325-->
         <plugin.resources.version>2.6</plugin.resources.version>
         <plugin.site.version>3.4</plugin.site.version>
+        <plugin.source.version>2.4</plugin.source.version>
         <plugin.surefire.version>2.18.1</plugin.surefire.version>
         <plugin.release.version>2.5.1</plugin.release.version>
         <plugin.jgitflow.version>1.0-m5.1</plugin.jgitflow.version>
@@ -281,6 +282,11 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
                     <version>${plugin.site.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${plugin.source.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
