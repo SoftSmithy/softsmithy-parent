@@ -395,6 +395,12 @@
         <profile>
             <!-- This profile is also specified in the Super POM and activated by maven-jgitflow-plugin:release-finish -->
             <id>release-profile</id>
+            <activation>
+                <property>
+                    <name>performRelease</name>
+                    <value>true</value>
+                </property>
+            </activation>
             <build>
                 <plugins>
                     <!-- This plugin is required by https://oss.sonatype.org -->
