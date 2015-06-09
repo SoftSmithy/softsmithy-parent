@@ -85,6 +85,7 @@
         <!-- use version 2.6 since version 2.7 suffers from the following issue: http://jira.codehaus.org/browse/MSHARED-325-->
         <plugin.resources.version>2.6</plugin.resources.version>
         <plugin.site.version>3.4</plugin.site.version>
+        <plugin.source.version>2.4</plugin.source.version>
         <plugin.surefire.version>2.18.1</plugin.surefire.version>
         <plugin.release.version>2.5.1</plugin.release.version>
         <plugin.jgitflow.version>1.0-m5.1</plugin.jgitflow.version>
@@ -281,6 +282,11 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
                     <version>${plugin.site.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${plugin.source.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
