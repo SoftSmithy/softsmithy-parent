@@ -21,7 +21,7 @@
 
     <scm>
         <connection>scm:git:https://github.com/SoftSmithy/softsmithy-parent.git</connection>
-        <developerConnection>scm:hg:git@github.com:SoftSmithy/softsmithy-parent.git</developerConnection>
+        <developerConnection>scm:git:git@github.com:SoftSmithy/softsmithy-parent.git</developerConnection>
         <url>https://github.com/SoftSmithy/softsmithy-parent</url>
         <tag>HEAD</tag>
     </scm>
@@ -91,7 +91,8 @@
         <plugin.jgitflow.version>1.0-m5.1</plugin.jgitflow.version>
         
         <!-- Wagon Versions Defaults -->
-        <wagon.ssh.version>2.7</wagon.ssh.version>   
+        <wagon.ssh.version>2.7</wagon.ssh.version>
+        <wagon.git.version>2.0.3</wagon.git.version>      
     </properties>
 
     <!-- Not inherited!?? -->
@@ -282,6 +283,13 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
                     <version>${plugin.site.version}</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>net.trajano.wagon</groupId>
+                            <artifactId>wagon-git</artifactId>
+                            <version>${wagon.git.version}</version>
+                        </dependency>
+                    </dependencies>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
