@@ -21,7 +21,7 @@
 
     <scm>
         <connection>scm:git:https://github.com/SoftSmithy/softsmithy-parent.git</connection>
-        <developerConnection>scm:hg:git@github.com:SoftSmithy/softsmithy-parent.git</developerConnection>
+        <developerConnection>scm:git:git@github.com:SoftSmithy/softsmithy-parent.git</developerConnection>
         <url>https://github.com/SoftSmithy/softsmithy-parent</url>
         <tag>HEAD</tag>
     </scm>
@@ -33,9 +33,9 @@
 
     <developers>
         <developer>
-            <id>puce</id>
+            <id>puce77</id>
             <name>Florian Brunner</name>
-            <email>softsmithy@gmx.net</email>
+            <email>fbrunnerreg@gmx.ch</email>
             <url>http://puces-blog.blogspot.com/</url>
             <timezone>1</timezone>
         </developer>
@@ -89,9 +89,11 @@
         <plugin.surefire.version>2.18.1</plugin.surefire.version>
         <plugin.release.version>2.5.1</plugin.release.version>
         <plugin.jgitflow.version>1.0-m5.1</plugin.jgitflow.version>
+        <plugin.github-site.version>0.12</plugin.github-site.version>
         
         <!-- Wagon Versions Defaults -->
-        <wagon.ssh.version>2.7</wagon.ssh.version>   
+        <wagon.ssh.version>2.7</wagon.ssh.version>
+        <wagon.git.version>2.0.3</wagon.git.version>      
     </properties>
 
     <!-- Not inherited!?? -->
@@ -282,6 +284,13 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
                     <version>${plugin.site.version}</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>net.trajano.wagon</groupId>
+                            <artifactId>wagon-git</artifactId>
+                            <version>${wagon.git.version}</version>
+                        </dependency>
+                    </dependencies>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -319,6 +328,17 @@
                         <flowInitContext>
                             <versionTagPrefix>release-</versionTagPrefix>
                         </flowInitContext>                    
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>com.github.github</groupId>
+                    <artifactId>site-maven-plugin</artifactId>
+                    <version>${plugin.github-site.version}</version>
+                    <configuration>
+                        <message>Creating site for ${project.version}</message>
+                        <!-- this does the trick to place every module in the correct subfolder -->
+                        <path>${project.distributionManagement.site.url}</path>
+                        <merge>true</merge>
                     </configuration>
                 </plugin>
             </plugins>
@@ -409,6 +429,10 @@
                     <value>true</value>
                 </property>
             </activation>
+            <properties>
+                <!-- untested! -->
+                <github.site.merge>false</github.site.merge>
+            </properties>
             <build>
                 <plugins>
                     <!-- This plugin is required by https://oss.sonatype.org -->
@@ -421,6 +445,35 @@
                                 <phase>verify</phase>
                                 <goals>
                                     <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>github</id>
+            <properties>
+                <github.global.server>github</github.global.server>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-site-plugin</artifactId>
+                        <configuration>
+                            <skipDeploy>true</skipDeploy>
+                        </configuration>
+                    </plugin>
+                    <!-- Note: v0.12 seems to be slow even with merge=true! Consider to use the git wagon and standard site plugin instead! -->
+                    <plugin>
+                        <groupId>com.github.github</groupId>
+                        <artifactId>site-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>site-deploy</phase>
+                                <goals>
+                                    <goal>site</goal>
                                 </goals>
                             </execution>
                         </executions>
