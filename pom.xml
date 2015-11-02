@@ -388,7 +388,7 @@
             </build>
         </profile>
         <profile>
-            <!-- This profile is also specified in the Super POM and activated by maven-jgitflow-plugin:release-finish -->
+            <!-- This profile is also specified in the Super POM (for now) and activated by maven-jgitflow-plugin:release-finish -->
             <id>release-profile</id>
             <activation>
                 <property>
