@@ -52,7 +52,7 @@
     <properties>
 
         <!-- Dev Environment Defaults -->
-        <maven.version>3.0.5</maven.version>
+        <maven.version>3.3.9</maven.version>
         <java.min.version>1.8</java.min.version>
         <java.compiler.compilerArgument>-Xlint:all</java.compiler.compilerArgument>
         <java.compiler.showWarnings>true</java.compiler.showWarnings>
