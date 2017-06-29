@@ -9,7 +9,7 @@
     <groupId>org.softsmithy</groupId>
     <artifactId>softsmithy-parent</artifactId>
     <packaging>pom</packaging>
-    <version>3.1</version>
+    <version>3.2</version>
     <name>SoftSmithy - Parent POM</name>
     <url>http://www.softsmithy.org</url>
     <description>SoftSmithy is a platform for open source Java developers. The core is an extended Java utility library. This SoftSmithy Parent POM should be the parent (either directly or indirectly) of every SoftSmithy project unless there is a good reason to do otherwise (in which case the reason should be documented).</description>
@@ -52,7 +52,7 @@
     <properties>
 
         <!-- Dev Environment Defaults -->
-        <maven.version>3.0.5</maven.version>
+        <maven.version>3.3.9</maven.version>
         <java.min.version>1.8</java.min.version>
         <java.compiler.compilerArgument>-Xlint:all</java.compiler.compilerArgument>
         <java.compiler.showWarnings>true</java.compiler.showWarnings>
@@ -68,7 +68,7 @@
         <!-- Plugin Versions Defaults -->
         <plugin.properties.version>1.0.0</plugin.properties.version>
         <plugin.enforcer.version>1.4.1</plugin.enforcer.version>
-        <plugin.bundle.version>3.2.0</plugin.bundle.version>
+        <plugin.bundle.version>3.3.0</plugin.bundle.version>
         <plugin.antrun.version>1.8</plugin.antrun.version>
         <plugin.assembly.version>3.0.0</plugin.assembly.version>
         <plugin.clean.version>3.0.0</plugin.clean.version>
