@@ -79,7 +79,7 @@
         <plugin.install.version>2.5.2</plugin.install.version>
         <plugin.jar.version>3.0.2</plugin.jar.version>
         <plugin.toolchains.version>1.1</plugin.toolchains.version>
-        <plugin.javadoc.version>2.10.4</plugin.javadoc.version>
+        <plugin.javadoc.version>3.0.0</plugin.javadoc.version>
         <plugin.project-info-reports.version>2.7</plugin.project-info-reports.version>
         <!-- use version 2.6 since version 2.7 suffers from the following issue: http://jira.codehaus.org/browse/MSHARED-325 -->
         <plugin.resources.version>3.0.2</plugin.resources.version>
@@ -414,6 +414,15 @@
                         <executions>
                             <execution>
                                 <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                                <configuration>
+                                    <skipSource>true</skipSource>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>attach-sources-no-fork</id>
                                 <goals>
                                     <goal>jar-no-fork</goal>
                                 </goals>
