@@ -409,26 +409,19 @@
             </properties>
             <build>
                 <plugins>
-                    <plugin>
+                    <!--                    <plugin>
+                        jar-no-fork does not work as long the release profile in the Super POM is still there
+                        see https://issues.apache.org/jira/browse/MNG-5940
                         <artifactId>maven-source-plugin</artifactId>
                         <executions>
                             <execution>
                                 <id>attach-sources</id>
                                 <goals>
-                                    <goal>jar</goal>
-                                </goals>
-                                <configuration>
-                                    <skipSource>true</skipSource>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>attach-sources-no-fork</id>
-                                <goals>
                                     <goal>jar-no-fork</goal>
                                 </goals>
                             </execution>
                         </executions>
-                    </plugin>
+                    </plugin>-->
                     <plugin>
                         <artifactId>maven-javadoc-plugin</artifactId>
                         <executions>
