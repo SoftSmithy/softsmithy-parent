@@ -9,7 +9,7 @@
     <groupId>org.softsmithy</groupId>
     <artifactId>softsmithy-parent</artifactId>
     <packaging>pom</packaging>
-    <version>3.2</version>
+    <version>3.3</version>
     <name>SoftSmithy - Parent POM</name>
     <url>http://www.softsmithy.org</url>
     <description>SoftSmithy is a platform for open source Java developers. The core is an extended Java utility library. This SoftSmithy Parent POM should be the parent (either directly or indirectly) of every SoftSmithy project unless there is a good reason to do otherwise (in which case the reason should be documented).</description>
@@ -68,7 +68,7 @@
         <!-- Plugin Versions Defaults -->
         <plugin.properties.version>1.0.0</plugin.properties.version>
         <plugin.enforcer.version>1.4.1</plugin.enforcer.version>
-        <plugin.bundle.version>3.3.0</plugin.bundle.version>
+        <plugin.bundle.version>3.5.0</plugin.bundle.version>
         <plugin.antrun.version>1.8</plugin.antrun.version>
         <plugin.assembly.version>3.0.0</plugin.assembly.version>
         <plugin.clean.version>3.0.0</plugin.clean.version>
@@ -79,7 +79,7 @@
         <plugin.install.version>2.5.2</plugin.install.version>
         <plugin.jar.version>3.0.2</plugin.jar.version>
         <plugin.toolchains.version>1.1</plugin.toolchains.version>
-        <plugin.javadoc.version>2.10.4</plugin.javadoc.version>
+        <plugin.javadoc.version>3.0.0</plugin.javadoc.version>
         <plugin.project-info-reports.version>2.7</plugin.project-info-reports.version>
         <!-- use version 2.6 since version 2.7 suffers from the following issue: http://jira.codehaus.org/browse/MSHARED-325 -->
         <plugin.resources.version>3.0.2</plugin.resources.version>
@@ -413,7 +413,12 @@
                         <artifactId>maven-source-plugin</artifactId>
                         <executions>
                             <execution>
+                                <!-- see https://issues.apache.org/jira/browse/MNG-5940 -->
                                 <id>attach-sources</id>
+                                <phase>DISABLE_FORKED_LIFECYCLE_MSOURCES</phase>
+                            </execution>
+                            <execution>
+                                <id>attach-sources-no-fork</id>
                                 <goals>
                                     <goal>jar-no-fork</goal>
                                 </goals>
