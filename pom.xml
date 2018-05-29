@@ -9,7 +9,7 @@
     <groupId>org.softsmithy</groupId>
     <artifactId>softsmithy-parent</artifactId>
     <packaging>pom</packaging>
-    <version>3.3</version>
+    <version>3.4</version>
     <name>SoftSmithy - Parent POM</name>
     <url>http://www.softsmithy.org</url>
     <description>SoftSmithy is a platform for open source Java developers. The core is an extended Java utility library. This SoftSmithy Parent POM should be the parent (either directly or indirectly) of every SoftSmithy project unless there is a good reason to do otherwise (in which case the reason should be documented).</description>
@@ -93,7 +93,8 @@
         <!-- Wagon Versions Defaults -->
         <wagon.ssh.version>2.10</wagon.ssh.version>
         <!--There is an issue with v2.0.4 : https://github.com/trajano/wagon-git/issues/18-->
-        <wagon.git.version>2.0.3</wagon.git.version>      
+        <wagon.git.version>2.0.3</wagon.git.version>  
+        <jsch.version>0.1.54</jsch.version>    
     </properties>
 
     <!-- Not inherited!?? -->
@@ -278,6 +279,11 @@
                             <groupId>net.trajano.wagon</groupId>
                             <artifactId>wagon-git</artifactId>
                             <version>${wagon.git.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>com.jcraft</groupId>
+                            <artifactId>jsch</artifactId>
+                            <version>${jsch.version}</version>
                         </dependency>
                     </dependencies>
                 </plugin>
