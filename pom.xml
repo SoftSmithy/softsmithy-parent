@@ -68,31 +68,31 @@
         <!-- Plugin Versions Defaults -->
         <plugin.properties.version>1.0.0</plugin.properties.version>
         <plugin.enforcer.version>1.4.1</plugin.enforcer.version>
-        <plugin.bundle.version>3.5.0</plugin.bundle.version>
+        <plugin.bundle.version>4.0.0</plugin.bundle.version>
         <plugin.antrun.version>1.8</plugin.antrun.version>
-        <plugin.assembly.version>3.0.0</plugin.assembly.version>
-        <plugin.clean.version>3.0.0</plugin.clean.version>
-        <plugin.compiler.version>3.7.0</plugin.compiler.version>
-        <plugin.dependency.version>3.0.0</plugin.dependency.version>
+        <plugin.assembly.version>3.1.0</plugin.assembly.version>
+        <plugin.clean.version>3.1.0</plugin.clean.version>
+        <plugin.compiler.version>3.8.0</plugin.compiler.version>
+        <plugin.dependency.version>3.1.1</plugin.dependency.version>
         <plugin.deploy.version>2.8.2</plugin.deploy.version>
         <plugin.gpg.version>1.6</plugin.gpg.version>
         <plugin.install.version>2.5.2</plugin.install.version>
         <plugin.jar.version>3.1.0</plugin.jar.version>
         <plugin.toolchains.version>1.1</plugin.toolchains.version>
-        <plugin.javadoc.version>3.0.0</plugin.javadoc.version>
+        <plugin.javadoc.version>3.0.1</plugin.javadoc.version>
         <plugin.project-info-reports.version>2.7</plugin.project-info-reports.version>
         <!-- use version 2.6 since version 2.7 suffers from the following issue: http://jira.codehaus.org/browse/MSHARED-325 -->
-        <plugin.resources.version>3.0.2</plugin.resources.version>
-        <plugin.site.version>3.6</plugin.site.version>
+        <plugin.resources.version>3.1.0</plugin.resources.version>
+        <plugin.site.version>3.7.1</plugin.site.version>
         <plugin.source.version>3.0.1</plugin.source.version>
-        <plugin.surefire.version>2.19.1</plugin.surefire.version>
+        <plugin.surefire.version>2.22.0</plugin.surefire.version>
         <plugin.release.version>2.5.3</plugin.release.version>
         <plugin.jgitflow.version>1.0-m5.1</plugin.jgitflow.version>
         <plugin.github-site.version>0.12</plugin.github-site.version>
         
         <!-- Wagon Versions Defaults -->
-        <wagon.ssh.version>2.10</wagon.ssh.version>
-        <!--There is an issue with v2.0.4 : https://github.com/trajano/wagon-git/issues/18-->
+        <wagon.ssh.version>3.2.0</wagon.ssh.version>
+        <!--There is an issue with v2.0.4 : https://github.com/trajano/wagon-git/issues/18 -->
         <wagon.git.version>2.0.3</wagon.git.version>  
         <jsch.version>0.1.54</jsch.version>    
     </properties>
