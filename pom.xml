@@ -63,12 +63,12 @@
         <test-resources.filtering>true</test-resources.filtering>
         <test-resources-bin.filtering>false</test-resources-bin.filtering>
         <test-annotations-resources.filtering>true</test-annotations-resources.filtering>
-        <release.plugin.arguments>-Psonatype-oss-release -Dusername=${username} -Dhttps.protocols=TLSv1.2</release.plugin.arguments>
+        <release.plugin.arguments>-Psonatype-oss-release -DperformRelease=true -Dusername=${username} -Dhttps.protocols=TLSv1.2</release.plugin.arguments>
         
         <!-- Plugin Versions Defaults -->
         <plugin.properties.version>1.0.0</plugin.properties.version>
         <plugin.enforcer.version>1.4.1</plugin.enforcer.version>
-        <plugin.bundle.version>4.0.0</plugin.bundle.version>
+        <plugin.bundle.version>4.1.0</plugin.bundle.version>
         <plugin.antrun.version>1.8</plugin.antrun.version>
         <plugin.assembly.version>3.1.0</plugin.assembly.version>
         <plugin.clean.version>3.1.0</plugin.clean.version>
