@@ -27,8 +27,8 @@
     </scm>
 
     <issueManagement>
-        <system>SourceForge.net</system>
-        <url>http://sourceforge.net/tracker/?group_id=64833</url>
+        <system>GitHub</system>
+        <url>https://github.com/SoftSmithy/softsmithy-parent/issues</url>
     </issueManagement>
 
     <developers>
