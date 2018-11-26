@@ -9,14 +9,14 @@
     <groupId>org.softsmithy</groupId>
     <artifactId>softsmithy-parent</artifactId>
     <packaging>pom</packaging>
-    <version>3.1-SNAPSHOT</version>
+    <version>3.7-SNAPSHOT</version>
     <name>SoftSmithy - Parent POM</name>
-    <url>http://www.softsmithy.org</url>
+    <url>https://www.softsmithy.org</url>
     <description>SoftSmithy is a platform for open source Java developers. The core is an extended Java utility library. This SoftSmithy Parent POM should be the parent (either directly or indirectly) of every SoftSmithy project unless there is a good reason to do otherwise (in which case the reason should be documented).</description>
     <inceptionYear>2002</inceptionYear>
     <organization>
         <name>SoftSmithy</name>
-        <url>http://www.softsmithy.org</url>
+        <url>https://www.softsmithy.org</url>
     </organization>
 
     <scm>
@@ -45,14 +45,14 @@
         <license>
             <name>COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL) Version 1.0</name>
             <distribution>repo</distribution>
-            <!--<url>http://java.sun.com/spl.html</url>-->
+            <!--<url>https://opensource.org/licenses/CDDL-1.0</url>-->
             <url>LICENSE.txt</url>
         </license>
     </licenses>
     <properties>
 
         <!-- Dev Environment Defaults -->
-        <maven.version>3.0.5</maven.version>
+        <maven.version>3.3.9</maven.version>
         <java.min.version>1.8</java.min.version>
         <java.compiler.compilerArgument>-Xlint:all</java.compiler.compilerArgument>
         <java.compiler.showWarnings>true</java.compiler.showWarnings>
@@ -63,37 +63,38 @@
         <test-resources.filtering>true</test-resources.filtering>
         <test-resources-bin.filtering>false</test-resources-bin.filtering>
         <test-annotations-resources.filtering>true</test-annotations-resources.filtering>
-        <release.plugin.arguments>-Psonatype-oss-release -Dusername=${username} -Dhttps.protocols=TLSv1.2</release.plugin.arguments>
+        <release.plugin.arguments>-Psonatype-oss-release -DperformRelease=true -Dusername=${username} -Dhttps.protocols=TLSv1.2</release.plugin.arguments>
         
         <!-- Plugin Versions Defaults -->
         <plugin.properties.version>1.0.0</plugin.properties.version>
         <plugin.enforcer.version>1.4.1</plugin.enforcer.version>
-        <plugin.bundle.version>3.2.0</plugin.bundle.version>
+        <plugin.bundle.version>4.1.0</plugin.bundle.version>
         <plugin.antrun.version>1.8</plugin.antrun.version>
-        <plugin.assembly.version>3.0.0</plugin.assembly.version>
-        <plugin.clean.version>3.0.0</plugin.clean.version>
-        <plugin.compiler.version>3.6.0</plugin.compiler.version>
-        <plugin.dependency.version>3.0.0</plugin.dependency.version>
+        <plugin.assembly.version>3.1.0</plugin.assembly.version>
+        <plugin.clean.version>3.1.0</plugin.clean.version>
+        <plugin.compiler.version>3.8.0</plugin.compiler.version>
+        <plugin.dependency.version>3.1.1</plugin.dependency.version>
         <plugin.deploy.version>2.8.2</plugin.deploy.version>
         <plugin.gpg.version>1.6</plugin.gpg.version>
         <plugin.install.version>2.5.2</plugin.install.version>
-        <plugin.jar.version>3.0.2</plugin.jar.version>
+        <plugin.jar.version>3.1.0</plugin.jar.version>
         <plugin.toolchains.version>1.1</plugin.toolchains.version>
-        <plugin.javadoc.version>2.10.4</plugin.javadoc.version>
+        <plugin.javadoc.version>3.0.1</plugin.javadoc.version>
         <plugin.project-info-reports.version>2.7</plugin.project-info-reports.version>
         <!-- use version 2.6 since version 2.7 suffers from the following issue: http://jira.codehaus.org/browse/MSHARED-325 -->
-        <plugin.resources.version>3.0.2</plugin.resources.version>
-        <plugin.site.version>3.6</plugin.site.version>
+        <plugin.resources.version>3.1.0</plugin.resources.version>
+        <plugin.site.version>3.7.1</plugin.site.version>
         <plugin.source.version>3.0.1</plugin.source.version>
-        <plugin.surefire.version>2.19.1</plugin.surefire.version>
+        <plugin.surefire.version>2.22.0</plugin.surefire.version>
         <plugin.release.version>2.5.3</plugin.release.version>
         <plugin.jgitflow.version>1.0-m5.1</plugin.jgitflow.version>
         <plugin.github-site.version>0.12</plugin.github-site.version>
         
         <!-- Wagon Versions Defaults -->
-        <wagon.ssh.version>2.10</wagon.ssh.version>
-        <!--There is an issue with v2.0.4 : https://github.com/trajano/wagon-git/issues/18-->
-        <wagon.git.version>2.0.3</wagon.git.version>      
+        <wagon.ssh.version>3.2.0</wagon.ssh.version>
+        <!--There is an issue with v2.0.4 : https://github.com/trajano/wagon-git/issues/18 -->
+        <wagon.git.version>2.0.3</wagon.git.version>  
+        <jsch.version>0.1.54</jsch.version>    
     </properties>
 
     <!-- Not inherited!?? -->
@@ -279,6 +280,11 @@
                             <artifactId>wagon-git</artifactId>
                             <version>${wagon.git.version}</version>
                         </dependency>
+                        <dependency>
+                            <groupId>com.jcraft</groupId>
+                            <artifactId>jsch</artifactId>
+                            <version>${jsch.version}</version>
+                        </dependency>
                     </dependencies>
                 </plugin>
                 <plugin>
@@ -413,7 +419,12 @@
                         <artifactId>maven-source-plugin</artifactId>
                         <executions>
                             <execution>
+                                <!-- see https://issues.apache.org/jira/browse/MNG-5940 -->
                                 <id>attach-sources</id>
+                                <phase>DISABLE_FORKED_LIFECYCLE_MSOURCES</phase>
+                            </execution>
+                            <execution>
+                                <id>attach-sources-no-fork</id>
                                 <goals>
                                     <goal>jar-no-fork</goal>
                                 </goals>
