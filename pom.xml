@@ -422,22 +422,6 @@
             <build>
                 <plugins>
                     <plugin>
-                        <artifactId>maven-source-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <!-- see https://issues.apache.org/jira/browse/MNG-5940 -->
-                                <id>attach-sources</id>
-                                <phase>DISABLE_FORKED_LIFECYCLE_MSOURCES</phase>
-                            </execution>
-                            <execution>
-                                <id>attach-sources-no-fork</id>
-                                <goals>
-                                    <goal>jar-no-fork</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
                         <artifactId>maven-javadoc-plugin</artifactId>
                         <executions>
                             <execution>
