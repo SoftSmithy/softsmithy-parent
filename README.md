@@ -2,9 +2,9 @@
 
 This parent POM provides usefull configurations such as properties and pluginManagement.
 
-| Major Version | Comment |
+| Major Version | Comments |
 | ------------- | ------- |
-| v4 | * Java SE 11 |
+| v4 | <ul><li>Java SE 11</li></ul> |
 
 
 ## Build the project from sources
