@@ -1,5 +1,11 @@
-# softsmithy-parent
-SoftSmithy Open Source Maven Parent POM
+# SoftSmithy Open Source Maven Parent POM
+
+This parent POM provides usefull configurations such as properties and pluginManagement.
+
+| Major Version | Comments |
+| ------------- | ------- |
+| v4 | <ul><li>Java SE 11</li></ul> |
+
 
 ## Build the project from sources
 ```bash
