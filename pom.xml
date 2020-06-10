@@ -9,7 +9,7 @@
     <groupId>org.softsmithy</groupId>
     <artifactId>softsmithy-parent</artifactId>
     <packaging>pom</packaging>
-    <version>4.1-SNAPSHOT</version>
+    <version>4.1.0-SNAPSHOT</version>
     <name>SoftSmithy - Parent POM</name>
     <url>https://www.softsmithy.org</url>
     <description>SoftSmithy is a platform for open source Java developers. The core is an extended Java utility library. This SoftSmithy Parent POM should be the parent (either directly or indirectly) of every SoftSmithy project unless there is a good reason to do otherwise (in which case the reason should be documented).</description>
@@ -67,7 +67,7 @@
         
         <!-- Plugin Versions Defaults -->
         <plugin.properties.version>1.0.0</plugin.properties.version>
-        <plugin.enforcer.version>1.4.1</plugin.enforcer.version>
+        <plugin.enforcer.version>3.0.0-M3</plugin.enforcer.version>
         <plugin.bundle.version>4.2.1</plugin.bundle.version>
         <plugin.antrun.version>1.8</plugin.antrun.version>
         <plugin.assembly.version>3.1.1</plugin.assembly.version>
@@ -98,10 +98,6 @@
         <jsch.version>0.1.54</jsch.version>    
     </properties>
 
-    <!-- Not inherited!?? -->
-    <prerequisites>
-        <maven>${maven.version}</maven>
-    </prerequisites>
     <build>
         <resources>
             <resource>
@@ -354,6 +350,8 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
+                <!-- TODO: why is the version here required? -->
+                <version>${plugin.enforcer.version}</version>
                 <executions>
                     <execution>
                         <id>enforce-versions</id>
