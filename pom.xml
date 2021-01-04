@@ -59,10 +59,10 @@
         <java.compiler.showDeprecation>true</java.compiler.showDeprecation>
         <main-resources.filtering>true</main-resources.filtering>
         <main-resources-bin.filtering>false</main-resources-bin.filtering>
-        <annotations-resources.filtering>true</annotations-resources.filtering>
+        <!--<annotations-resources.filtering>true</annotations-resources.filtering>-->
         <test-resources.filtering>true</test-resources.filtering>
         <test-resources-bin.filtering>false</test-resources-bin.filtering>
-        <test-annotations-resources.filtering>true</test-annotations-resources.filtering>
+        <!--<test-annotations-resources.filtering>true</test-annotations-resources.filtering>-->
         <release.plugin.arguments>-Psonatype-oss-release -DperformRelease=true -Dusername=${username} -Dhttps.protocols=TLSv1.2</release.plugin.arguments>
         
         <!-- Plugin Versions Defaults -->
@@ -112,13 +112,13 @@
                 <directory>src/main/resources-bin</directory>
                 <filtering>${main-resources-bin.filtering}</filtering>
             </resource>
-            <resource>
+            <!--            <resource>
                 <directory>${project.build.directory}/generated-sources/annotations</directory>
                 <excludes>
                     <exclude>**/*.java</exclude>
                 </excludes>
                 <filtering>${annotations-resources.filtering}</filtering>
-            </resource>
+            </resource>-->
         </resources>
         <testResources>
             <testResource>
@@ -129,13 +129,13 @@
                 <directory>src/test/resources-bin</directory>
                 <filtering>${test-resources-bin.filtering}</filtering>
             </testResource>
-            <testResource>
+            <!--            <testResource>
                 <directory>${project.build.directory}/generated-test-sources/test-annotations</directory>
                 <excludes>
                     <exclude>**/*.java</exclude>
                 </excludes>
                 <filtering>${test-annotations-resources.filtering}</filtering>
-            </testResource>
+            </testResource>-->
         </testResources>
         <extensions>
             <extension>
