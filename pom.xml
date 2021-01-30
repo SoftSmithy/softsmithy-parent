@@ -329,7 +329,18 @@
                         <pushReleases>true</pushReleases>
                         <flowInitContext>
                             <versionTagPrefix>release-</versionTagPrefix>
-                        </flowInitContext>                    
+                        </flowInitContext>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>com.amashchenko.maven.plugin</groupId>
+                    <artifactId>gitflow-maven-plugin</artifactId>
+                    <version>1.15.0</version>
+                    <configuration>
+                        <gitFlowConfig>
+                            <developmentBranch>master</developmentBranch>
+                            <versionTagPrefix>release-</versionTagPrefix>
+                        </gitFlowConfig>
                     </configuration>
                 </plugin>
                 <plugin>
