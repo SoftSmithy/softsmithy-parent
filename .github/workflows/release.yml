@@ -18,9 +18,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # required for gitflow and tagging
+          fetch-depth: 0  # required for tagging and version commits
 
-      - name: Set up JDK 11
+      - name: Set up JDK 11 with OSSRH + GPG
         uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -32,8 +32,9 @@ jobs:
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: GPG_PASSPHRASE
 
+      # 1. Set release version
       - name: Set release version
-        run: mvn versions:set -DnewVersion=${{ github.event.inputs.release_version }}
+        run: mvn -B versions:set -DnewVersion=${{ github.event.inputs.release_version }}
 
       - name: Commit release version
         run: |
@@ -41,15 +42,29 @@ jobs:
           git config user.email "github-actions@github.com"
           git commit -am "Release ${{ github.event.inputs.release_version }}"
 
+      # 2. Fail if any SNAPSHOT dependencies exist
+      - name: Enforce no SNAPSHOT dependencies
+        run: mvn -B enforcer:enforce -Denforcer.rules=requireReleaseDeps
+
+      # 3. Build + deploy to OSSRH (staging + release)
       - name: Deploy to OSSRH
-        run: mvn -B clean deploy -P release -DskipTests=false
+        run: mvn -B clean deploy -DskipTests=false
 
-      - name: Set next snapshot version
-        run: mvn versions:set -DnewVersion=${{ github.event.inputs.next_snapshot }}
-
-      - name: Commit next snapshot
+      # 4. Tag the release
+      - name: Create release tag
         run: |
-          git commit -am "Prepare for next development iteration"
+          git tag v${{ github.event.inputs.release_version }}
 
-      - name: Push changes
-        run: git push --follow-tags
+      # 5. Set next snapshot version
+      - name: Set next snapshot version
+        run: mvn -B versions:set -DnewVersion=${{ github.event.inputs.next_snapshot }}
+
+      - name: Commit next snapshot version
+        run: |
+          git commit -am "Prepare next development iteration"
+
+      # 6. Push everything (commits + tag)
+      - name: Push changes and tag
+        run: |
+          git push
+          git push origin v${{ github.event.inputs.release_version }}
