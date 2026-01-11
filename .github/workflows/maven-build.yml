@@ -29,3 +29,9 @@ jobs:
       # Build and run tests
       - name: Build with Maven
         run: mvn -B clean verify
+
+      # Upload dependency graph for Dependabot and security insights
+      # Only run this on the master branch to avoid unnecessary CI load
+      - name: Update dependency graph
+        if: github.ref == 'refs/heads/master'
+        uses: advanced-security/maven-dependency-submission-action@v4
