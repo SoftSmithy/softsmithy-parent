@@ -85,7 +85,7 @@
         <plugin.resources.version>3.1.0</plugin.resources.version>
         <plugin.site.version>3.8.2</plugin.site.version>
         <plugin.source.version>3.1.0</plugin.source.version>
-        <plugin.surefire.version>2.22.2</plugin.surefire.version>
+        <plugin.surefire.version>3.5.4</plugin.surefire.version>
         <plugin.release.version>2.5.3</plugin.release.version>
         <plugin.archetype.version>3.1.1</plugin.archetype.version>
         <plugin.jgitflow.version>1.0-m5.1</plugin.jgitflow.version>
