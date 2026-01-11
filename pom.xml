@@ -74,7 +74,7 @@
         <plugin.clean.version>3.1.0</plugin.clean.version>
         <plugin.compiler.version>3.8.1</plugin.compiler.version>
         <plugin.dependency.version>3.1.1</plugin.dependency.version>
-        <plugin.deploy.version>2.8.2</plugin.deploy.version>
+        <plugin.deploy.version>3.1.4</plugin.deploy.version>
         <plugin.gpg.version>1.6</plugin.gpg.version>
         <plugin.install.version>2.5.2</plugin.install.version>
         <plugin.jar.version>3.2.0</plugin.jar.version>
