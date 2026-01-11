@@ -95,7 +95,7 @@
         <wagon.ssh.version>3.3.3</wagon.ssh.version>
         <!--There is an issue with v2.0.4 : https://github.com/trajano/wagon-git/issues/18 -->
         <wagon.git.version>2.0.3</wagon.git.version>  
-        <jsch.version>0.1.54</jsch.version>    
+        <jsch.version>0.1.55</jsch.version>    
     </properties>
 
     <build>
