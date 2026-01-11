@@ -24,7 +24,7 @@ jobs:
     #     server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
     #     settings-path: ${{ github.workspace }} # location for the settings.xml file
     - name: Setup Maven Action
-      uses: s4u/setup-maven-action@v1.16.0
+      uses: s4u/setup-maven-action@v1.19.0
       with:
         checkout-fetch-depth: 0
         java-version: 11
