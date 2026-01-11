@@ -33,4 +33,4 @@ jobs:
       # Only run this on the master branch to avoid unnecessary CI load
       - name: Update dependency graph
         if: github.ref == 'refs/heads/master'
-        uses: advanced-security/maven-dependency-submission-action@v4
+        uses: advanced-security/maven-dependency-submission-action@v5
