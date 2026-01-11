@@ -46,7 +46,7 @@ jobs:
       - name: Enforce no SNAPSHOT dependencies
         run: mvn -B enforcer:enforce -Denforcer.rules=requireReleaseDeps
 
-      # 3. Build + deploy to OSSRH (staging + release)
+      # 3. Build + deploy to OSSRH
       - name: Deploy to OSSRH
         run: mvn -B clean deploy -DskipTests=false
 
@@ -55,7 +55,22 @@ jobs:
         run: |
           git tag v${{ github.event.inputs.release_version }}
 
-      # 5. Set next snapshot version
+      # 5. Generate release notes
+      - name: Generate release notes
+        id: notes
+        uses: actions/generate-release-notes@v2
+        with:
+          tag_name: v${{ github.event.inputs.release_version }}
+
+      # 6. Create GitHub Release
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
+        with:
+          tag_name: v${{ github.event.inputs.release_version }}
+          release_name: "v${{ github.event.inputs.release_version }}"
+          body: ${{ steps.notes.outputs.notes }}
+
+      # 7. Set next snapshot version
       - name: Set next snapshot version
         run: mvn -B versions:set -DnewVersion=${{ github.event.inputs.next_snapshot }}
 
@@ -63,7 +78,7 @@ jobs:
         run: |
           git commit -am "Prepare next development iteration"
 
-      # 6. Push everything (commits + tag)
+      # 8. Push everything
       - name: Push changes and tag
         run: |
           git push
