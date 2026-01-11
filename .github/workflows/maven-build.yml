@@ -4,9 +4,8 @@ on:
   push:
     branches:
       - master
-      - develop
       - feature/**
-      - bugfix/**
+      - support/**
   pull_request:
 
 jobs:
