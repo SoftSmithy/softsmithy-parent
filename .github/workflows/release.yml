@@ -1,0 +1,55 @@
+name: Release to Maven Central
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_version:
+        description: "Release version (e.g. 4.1.1)"
+        required: true
+      next_snapshot:
+        description: "Next snapshot version (e.g. 4.1.2-SNAPSHOT)"
+        required: true
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # required for gitflow and tagging
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '11'
+          cache: maven
+          server-id: ossrh
+          server-username: OSSRH_USERNAME
+          server-password: OSSRH_PASSWORD
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          gpg-passphrase: GPG_PASSPHRASE
+
+      - name: Set release version
+        run: mvn versions:set -DnewVersion=${{ github.event.inputs.release_version }}
+
+      - name: Commit release version
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git commit -am "Release ${{ github.event.inputs.release_version }}"
+
+      - name: Deploy to OSSRH
+        run: mvn -B clean deploy -P release -DskipTests=false
+
+      - name: Set next snapshot version
+        run: mvn versions:set -DnewVersion=${{ github.event.inputs.next_snapshot }}
+
+      - name: Commit next snapshot
+        run: |
+          git commit -am "Prepare for next development iteration"
+
+      - name: Push changes
+        run: git push --follow-tags
